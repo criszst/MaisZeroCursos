@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.gbDocentes = new System.Windows.Forms.GroupBox();
+            this.lblSexo = new System.Windows.Forms.Label();
+            this.cboSexo = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cboGrauEscolaridade = new System.Windows.Forms.ComboBox();
             this.cboStatus = new System.Windows.Forms.ComboBox();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -47,14 +50,17 @@
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnBusca = new System.Windows.Forms.Button();
-            this.dgvDados = new System.Windows.Forms.DataGridView();
+            this.dgViewDados = new System.Windows.Forms.DataGridView();
             this.gbDocentes.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgViewDados)).BeginInit();
             this.SuspendLayout();
             // 
             // gbDocentes
             // 
+            this.gbDocentes.Controls.Add(this.lblSexo);
+            this.gbDocentes.Controls.Add(this.cboSexo);
+            this.gbDocentes.Controls.Add(this.comboBox1);
             this.gbDocentes.Controls.Add(this.cboGrauEscolaridade);
             this.gbDocentes.Controls.Add(this.cboStatus);
             this.gbDocentes.Controls.Add(this.lblStatus);
@@ -67,32 +73,59 @@
             this.gbDocentes.Controls.Add(this.lblNome);
             this.gbDocentes.Location = new System.Drawing.Point(12, 12);
             this.gbDocentes.Name = "gbDocentes";
-            this.gbDocentes.Size = new System.Drawing.Size(571, 174);
+            this.gbDocentes.Size = new System.Drawing.Size(696, 174);
             this.gbDocentes.TabIndex = 1;
             this.gbDocentes.TabStop = false;
+            // 
+            // lblSexo
+            // 
+            this.lblSexo.AutoSize = true;
+            this.lblSexo.Location = new System.Drawing.Point(539, 22);
+            this.lblSexo.Name = "lblSexo";
+            this.lblSexo.Size = new System.Drawing.Size(41, 20);
+            this.lblSexo.TabIndex = 19;
+            this.lblSexo.Text = "Sexo";
+            // 
+            // cboSexo
+            // 
+            this.cboSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSexo.FormattingEnabled = true;
+            this.cboSexo.Location = new System.Drawing.Point(539, 45);
+            this.cboSexo.Name = "cboSexo";
+            this.cboSexo.Size = new System.Drawing.Size(151, 28);
+            this.cboSexo.TabIndex = 18;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(273, 172);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 28);
+            this.comboBox1.TabIndex = 18;
             // 
             // cboGrauEscolaridade
             // 
             this.cboGrauEscolaridade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGrauEscolaridade.FormattingEnabled = true;
-            this.cboGrauEscolaridade.Location = new System.Drawing.Point(376, 125);
+            this.cboGrauEscolaridade.Location = new System.Drawing.Point(469, 125);
             this.cboGrauEscolaridade.Name = "cboGrauEscolaridade";
-            this.cboGrauEscolaridade.Size = new System.Drawing.Size(151, 28);
+            this.cboGrauEscolaridade.Size = new System.Drawing.Size(221, 28);
             this.cboGrauEscolaridade.TabIndex = 18;
             // 
             // cboStatus
             // 
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(193, 125);
+            this.cboStatus.Location = new System.Drawing.Point(203, 125);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(151, 28);
+            this.cboStatus.Size = new System.Drawing.Size(231, 28);
             this.cboStatus.TabIndex = 17;
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(193, 88);
+            this.lblStatus.Location = new System.Drawing.Point(203, 88);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(49, 20);
             this.lblStatus.TabIndex = 16;
@@ -101,7 +134,7 @@
             // lblGrauEscolaridade
             // 
             this.lblGrauEscolaridade.AutoSize = true;
-            this.lblGrauEscolaridade.Location = new System.Drawing.Point(376, 88);
+            this.lblGrauEscolaridade.Location = new System.Drawing.Point(469, 88);
             this.lblGrauEscolaridade.Name = "lblGrauEscolaridade";
             this.lblGrauEscolaridade.Size = new System.Drawing.Size(150, 20);
             this.lblGrauEscolaridade.TabIndex = 13;
@@ -118,7 +151,7 @@
             // txtCpf
             // 
             this.txtCpf.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCpf.Location = new System.Drawing.Point(377, 46);
+            this.txtCpf.Location = new System.Drawing.Point(360, 46);
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(167, 27);
             this.txtCpf.TabIndex = 11;
@@ -135,7 +168,7 @@
             // lblCpf
             // 
             this.lblCpf.AutoSize = true;
-            this.lblCpf.Location = new System.Drawing.Point(376, 23);
+            this.lblCpf.Location = new System.Drawing.Point(360, 23);
             this.lblCpf.Name = "lblCpf";
             this.lblCpf.Size = new System.Drawing.Size(33, 20);
             this.lblCpf.TabIndex = 3;
@@ -165,7 +198,7 @@
             this.groupBox4.Controls.Add(this.btnSair);
             this.groupBox4.Controls.Add(this.btnEdit);
             this.groupBox4.Controls.Add(this.btnCadastrar);
-            this.groupBox4.Location = new System.Drawing.Point(619, 12);
+            this.groupBox4.Location = new System.Drawing.Point(732, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(227, 628);
             this.groupBox4.TabIndex = 3;
@@ -235,44 +268,45 @@
             this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSearch.Location = new System.Drawing.Point(12, 218);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(296, 27);
+            this.txtSearch.Size = new System.Drawing.Size(424, 27);
             this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnBusca
             // 
             this.btnBusca.Image = global::SistemaMaisZeroCursos.Properties.Resources._211818_search_icon;
-            this.btnBusca.Location = new System.Drawing.Point(389, 204);
+            this.btnBusca.Location = new System.Drawing.Point(508, 204);
             this.btnBusca.Name = "btnBusca";
             this.btnBusca.Size = new System.Drawing.Size(194, 41);
             this.btnBusca.TabIndex = 5;
             this.btnBusca.UseVisualStyleBackColor = true;
             // 
-            // dgvDados
+            // dgViewDados
             // 
-            this.dgvDados.AllowUserToAddRows = false;
-            this.dgvDados.AllowUserToDeleteRows = false;
-            this.dgvDados.AllowUserToResizeColumns = false;
-            this.dgvDados.AllowUserToResizeRows = false;
-            this.dgvDados.BackgroundColor = System.Drawing.Color.White;
-            this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDados.GridColor = System.Drawing.Color.LightGray;
-            this.dgvDados.Location = new System.Drawing.Point(12, 265);
-            this.dgvDados.Name = "dgvDados";
-            this.dgvDados.ReadOnly = true;
-            this.dgvDados.RowHeadersVisible = false;
-            this.dgvDados.RowHeadersWidth = 51;
-            this.dgvDados.RowTemplate.Height = 29;
-            this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDados.Size = new System.Drawing.Size(571, 375);
-            this.dgvDados.TabIndex = 6;
+            this.dgViewDados.AllowUserToAddRows = false;
+            this.dgViewDados.AllowUserToDeleteRows = false;
+            this.dgViewDados.AllowUserToResizeColumns = false;
+            this.dgViewDados.AllowUserToResizeRows = false;
+            this.dgViewDados.BackgroundColor = System.Drawing.Color.White;
+            this.dgViewDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgViewDados.GridColor = System.Drawing.Color.LightGray;
+            this.dgViewDados.Location = new System.Drawing.Point(12, 265);
+            this.dgViewDados.Name = "dgViewDados";
+            this.dgViewDados.ReadOnly = true;
+            this.dgViewDados.RowHeadersVisible = false;
+            this.dgViewDados.RowHeadersWidth = 51;
+            this.dgViewDados.RowTemplate.Height = 29;
+            this.dgViewDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgViewDados.Size = new System.Drawing.Size(690, 375);
+            this.dgViewDados.TabIndex = 6;
             // 
             // FrmDocentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 657);
+            this.ClientSize = new System.Drawing.Size(971, 661);
             this.ControlBox = false;
-            this.Controls.Add(this.dgvDados);
+            this.Controls.Add(this.dgViewDados);
             this.Controls.Add(this.btnBusca);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.groupBox4);
@@ -287,7 +321,7 @@
             this.gbDocentes.ResumeLayout(false);
             this.gbDocentes.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgViewDados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,6 +348,9 @@
         private Button btnCadastrar;
         private TextBox txtSearch;
         private Button btnBusca;
-        private DataGridView dgvDados;
+        private DataGridView dgViewDados;
+        private Label lblSexo;
+        private ComboBox cboSexo;
+        private ComboBox comboBox1;
     }
 }

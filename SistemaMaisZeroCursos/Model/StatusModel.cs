@@ -11,4 +11,10 @@
         public int Id { get; set; }
         public string? Desc { get; set; }
     }
+
+    public class StatusSexo
+    {
+        public int Id { get; set; }
+        public string? Desc { get; set; }
+    }
 }

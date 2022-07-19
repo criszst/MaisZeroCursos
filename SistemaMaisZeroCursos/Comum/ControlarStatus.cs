@@ -66,5 +66,26 @@ namespace SistemaMaisZeroCursos.Comum
 
             return listaStatus;
         }
+
+        public static List<StatusSexo> statusSexo()
+        {
+            var lstSt = new List<StatusSexo>();
+
+            var masculino = new StatusSexo
+            {
+                Desc = "Masculino",
+                Id = 1
+            };
+            lstSt.Add(masculino);
+
+            var feminino = new StatusSexo
+            {
+                Desc = "Feminino",
+                Id = 2
+            };
+            lstSt.Add(feminino);
+
+            return lstSt;
+        }
     }
 }
