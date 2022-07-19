@@ -113,6 +113,16 @@ namespace SistemaMaisZeroCursos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4763274_instructor_professor_teacher_teaching_tutor_icon {
+            get {
+                object obj = ResourceManager.GetObject("4763274_instructor_professor_teacher_teaching_tutor_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _6333176_adherent_apostle_disciple_follower_pupil_icon {
             get {
                 object obj = ResourceManager.GetObject("6333176_adherent_apostle_disciple_follower_pupil_icon", resourceCulture);

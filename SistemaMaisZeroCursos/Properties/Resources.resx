@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="2931185_door_enter_exit_leave_out_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2931185_door_enter_exit_leave_out_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="6333176_adherent_apostle_disciple_follower_pupil_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\6333176_adherent_apostle_disciple_follower_pupil_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,7 +139,7 @@
   <data name="2931176_diskette_guardar_save_disk_drive_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2931176_diskette_guardar_save_disk_drive_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="2931185_door_enter_exit_leave_out_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2931185_door_enter_exit_leave_out_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="4763274_instructor_professor_teacher_teaching_tutor_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4763274_instructor_professor_teacher_teaching_tutor_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

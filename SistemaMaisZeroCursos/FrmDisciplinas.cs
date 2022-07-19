@@ -38,7 +38,6 @@ namespace SistemaMaisZeroCursos
 
             return sbMsg.ToString();
 
-
         }
 
         private void Registrar()
