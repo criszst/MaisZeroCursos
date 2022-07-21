@@ -41,9 +41,38 @@ namespace SistemaMaisZeroCursos.Repository
             return lstDocentes;
         }
 
-        public void Atualizar()
+        public void Atualizar(DocentesModel docentes)
         {
-            // TODO: Função atualizar registro
+            var lstDocentes = CarregarDados();
+
+            if (lstDocentes != null && lstDocentes.Any() && docentes.Id > 0)
+            {
+                var docentesFiltro = lstDocentes.Where(c => c.Id == docentes.Id).FirstOrDefault();
+                if (docentesFiltro != null)
+                {
+
+                    docentesFiltro.Name = docentes.Name;
+                    docentesFiltro.Id = docentes.Id;
+                    docentesFiltro.Cpf = docentes.Cpf;
+                    docentesFiltro.SexoDocente = docentes.SexoDocente;
+                    docentesFiltro.IdSexo = docentes.IdSexo;
+
+                    docentesFiltro.DataNascimento = docentes.DataNascimento;
+
+                    docentesFiltro.DescStatus = docentes.DescStatus;
+                    docentesFiltro.IdStatus = docentes.IdStatus;
+
+                    docentesFiltro.GrauEscolar = docentes.GrauEscolar;
+                    docentesFiltro.IdGrauEscolar = docentes.IdGrauEscolar;
+
+                    docentesFiltro.DataAtualizacao = docentes.DataAtualizacao;
+
+                    var arquivo = new ioFile();
+
+                    var arquivoJson = JsonSerializer.Serialize(lstDocentes);
+                    arquivo.GravarArquivo(arquivoJson, NomeArquivos.Docentes);
+                }
+            }
         }
 
         public List<DocentesModel> CarregarDados()

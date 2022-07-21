@@ -51,6 +51,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnBusca = new System.Windows.Forms.Button();
             this.dgViewDados = new System.Windows.Forms.DataGridView();
+            this.txtBoxId = new System.Windows.Forms.TextBox();
             this.gbDocentes.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewDados)).BeginInit();
@@ -71,6 +72,7 @@
             this.gbDocentes.Controls.Add(this.lblCpf);
             this.gbDocentes.Controls.Add(this.txtNome);
             this.gbDocentes.Controls.Add(this.lblNome);
+            this.gbDocentes.Enabled = false;
             this.gbDocentes.Location = new System.Drawing.Point(12, 12);
             this.gbDocentes.Name = "gbDocentes";
             this.gbDocentes.Size = new System.Drawing.Size(696, 174);
@@ -215,6 +217,7 @@
             this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Ca&ncelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -227,6 +230,7 @@
             this.btnSalvar.TabIndex = 3;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnSair
             // 
@@ -250,6 +254,7 @@
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "&Editar";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnCadastrar
             // 
@@ -299,6 +304,14 @@
             this.dgViewDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgViewDados.Size = new System.Drawing.Size(690, 375);
             this.dgViewDados.TabIndex = 6;
+            this.dgViewDados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgViewDados_CellContentClick);
+            // 
+            // txtBoxId
+            // 
+            this.txtBoxId.Location = new System.Drawing.Point(454, 218);
+            this.txtBoxId.Name = "txtBoxId";
+            this.txtBoxId.Size = new System.Drawing.Size(32, 27);
+            this.txtBoxId.TabIndex = 7;
             // 
             // FrmDocentes
             // 
@@ -306,6 +319,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 661);
             this.ControlBox = false;
+            this.Controls.Add(this.txtBoxId);
             this.Controls.Add(this.dgViewDados);
             this.Controls.Add(this.btnBusca);
             this.Controls.Add(this.txtSearch);
@@ -352,5 +366,6 @@
         private Label lblSexo;
         private ComboBox cboSexo;
         private ComboBox comboBox1;
+        private TextBox txtBoxId;
     }
 }

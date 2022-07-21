@@ -7,6 +7,9 @@ namespace SistemaMaisZeroCursos
 {
     public partial class FrmDocentes : Form
     {
+        public bool cadastrando = false;
+        public bool editando = false;
+
         public FrmDocentes()
         {
             InitializeComponent();
@@ -29,9 +32,12 @@ namespace SistemaMaisZeroCursos
             {
                 sb.Append("O nome deve ter pelo menos 4 letras");
                 name.Focus();
+            } else if (cadastrando == true && lstDocentes.Any(c => c.Cpf == Cpf.formatarCpf(cpf.Text))) {
+                sb.Append("Esse CPF já está cadastrado.");
+                cpf.Focus();
             }
 
-            else if (!ValidarCpf.validar(cpf.Text)) {
+            else if (!Cpf.validar(Cpf.formatarCpf(cpf.Text))) {
                 sb.Append("O CPF não é válido.");
                 cpf.Focus();
             }
@@ -51,7 +57,7 @@ namespace SistemaMaisZeroCursos
             var lstDocente = new List<DocentesModel>();
 
             var name = txtNome.Text;
-            var cpf = txtCpf.Text;
+            var cpf = Cpf.formatarCpf(txtCpf.Text);
             DateTime dataNascimento = Convert.ToDateTime(dtNascimento.Text);
 
             var cbSexo = cboSexo.Text;
@@ -83,14 +89,10 @@ namespace SistemaMaisZeroCursos
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(ValidarRegistro()))
-            {
-                MessageBox.Show(ValidarRegistro());
-            } else
-            {
-                Registro();
-            }
-            
+            cadastrando = true;
+            ControlarComponentes();
+            txtNome.Focus();
+            Limpar();
         }
 
         private void FrmDocentes_Load(object sender, EventArgs e)
@@ -162,10 +164,40 @@ namespace SistemaMaisZeroCursos
             dgViewDados.Columns["IdSexo"].Visible = false;
             dgViewDados.Columns["IdGrauEscolar"].Visible = false;
             dgViewDados.Columns["IdStatus"].Visible = false;
+            txtBoxId.Visible = false;
 
 
             dgViewDados.RowsDefaultCellStyle.BackColor = Color.White;
             dgViewDados.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+        }
+
+        private void ControlarComponentes()
+        {
+            gbDocentes.Enabled = !gbDocentes.Enabled;
+            btnBusca.Enabled = !btnBusca.Enabled;
+            btnCancelar.Enabled = !btnCancelar.Enabled;
+            btnSalvar.Enabled = !btnSalvar.Enabled;
+            btnCadastrar.Enabled = !btnCadastrar.Enabled;
+            btnEdit.Enabled = !btnEdit.Enabled;
+            btnSair.Enabled = !btnSair.Enabled;
+            dgViewDados.Enabled = !dgViewDados.Enabled;
+        }
+
+        private void Limpar()
+        {
+            txtNome.Text = String.Empty;
+            txtCpf.Text = String.Empty;
+            dtNascimento.Text = DateTime.Now.ToString();
+            cboSexo.SelectedIndex = 0;
+            cboGrauEscolaridade.SelectedIndex = 0;
+        }
+
+        private void Recarregar()
+        {
+            Limpar();
+            ControlarComponentes();
+
+            MostrarDadosTela();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -177,6 +209,85 @@ namespace SistemaMaisZeroCursos
             else
             {
                 MostrarDados(lstDocentes);
+            }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(ValidarRegistro()))
+            {
+                if (cadastrando)
+                {
+                    Registro();
+                    Recarregar();
+                }
+                else
+                {
+                    AtualizarRegistro();
+
+                    if (editando) Recarregar();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show(ValidarRegistro());
+            }
+        }
+
+        public void AtualizarRegistro()
+        {
+            var docentesRepository = new DocentesRepository();
+            editando = true;
+
+
+            var docenteModel = new DocentesModel
+            {
+                Name = txtNome.Text,
+                Id = int.Parse(txtBoxId.Text),
+                Cpf = Cpf.formatarCpf(txtCpf.Text),
+                SexoDocente = cboSexo.Text,
+                IdSexo = Convert.ToInt32(cboSexo.SelectedValue),
+
+                DataNascimento = Convert.ToDateTime(dtNascimento.Text),
+
+                DescStatus = cboStatus.Text,
+                IdStatus = Convert.ToInt32(cboStatus.SelectedValue),
+
+                GrauEscolar = cboGrauEscolaridade.Text,
+                IdGrauEscolar = Convert.ToInt32(cboGrauEscolaridade.SelectedValue),
+
+                DataAtualizacao = DateTime.UtcNow.AddHours(-3),
+            };
+                docentesRepository.Atualizar(docenteModel);
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Recarregar();
+            cadastrando = false;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            cadastrando = false;
+            ControlarComponentes();
+            txtNome.Focus();
+        }
+
+        private void dgViewDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                txtNome.Text = dgViewDados.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                txtCpf.Text = dgViewDados.Rows[e.RowIndex].Cells["Cpf"].Value.ToString();
+                txtBoxId.Text = dgViewDados.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+
+                cboSexo.SelectedValue = dgViewDados.Rows[e.RowIndex].Cells["IdSexo"].Value;
+                dtNascimento.Text = dgViewDados.Rows[e.RowIndex].Cells["dataNascimento"].Value.ToString();
+                cboStatus.SelectedValue = dgViewDados.Rows[e.RowIndex].Cells["IdStatus"].Value;
+                cboGrauEscolaridade.SelectedValue = dgViewDados.Rows[e.RowIndex].Cells["IdGrauEscolar"].Value;
             }
         }
     }

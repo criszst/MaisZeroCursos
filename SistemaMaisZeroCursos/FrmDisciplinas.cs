@@ -22,17 +22,17 @@ namespace SistemaMaisZeroCursos
             StringBuilder sbMsg = new StringBuilder();
             if (string.IsNullOrEmpty(txtDisciplinas.Text))
             {
-                sbMsg.Append("Campo disciplina não pode estar vazio");
+                sbMsg.Append("Campo disciplina não pode estar vazio.");
                 txtDisciplinas.Focus();
             }
             else if (txtDisciplinas.TextLength < 5)
             {
-                sbMsg.Append("Não pode ser menor que 5 letras");
+                sbMsg.Append("O nome da disciplina não pode ter menos que 5 letras.");
                 txtDisciplinas.Focus();
 
             } else if (LstDisciplinas.Any(d => d.NomeDisciplina == txtDisciplinas.Text))
             {
-                sbMsg.Append("Já existe uma disciplina cadastrada com esse nome");
+                sbMsg.Append("Já existe uma disciplina cadastrada com esse nome.");
                 txtDisciplinas.Focus();
             }
 

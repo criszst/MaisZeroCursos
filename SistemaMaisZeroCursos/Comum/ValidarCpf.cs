@@ -1,6 +1,6 @@
 ﻿namespace SistemaMaisZeroCursos.Comum
 {
-    public class ValidarCpf
+    public class Cpf
     {
         public static bool validar(string cpf)
         {
@@ -51,6 +51,13 @@
 
             return cpf.EndsWith(digito);
 
+        }
+
+        public static string formatarCpf(string cpf)
+        {
+           cpf = cpf.Replace(".", "").Replace("-", "");
+           cpf = cpf.Trim();
+            return Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
         }
     }
 }
