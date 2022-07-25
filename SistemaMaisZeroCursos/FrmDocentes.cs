@@ -32,13 +32,15 @@ namespace SistemaMaisZeroCursos
             {
                 sb.Append("O nome deve ter pelo menos 4 letras");
                 name.Focus();
-            } else if (cadastrando == true && lstDocentes.Any(c => c.Cpf == Cpf.formatarCpf(cpf.Text))) {
-                sb.Append("Esse CPF já está cadastrado.");
-                cpf.Focus();
             }
 
-            else if (!Cpf.validar(Cpf.formatarCpf(cpf.Text))) {
+            else if (!Cpf.validar(cpf.Text)) {
                 sb.Append("O CPF não é válido.");
+                cpf.Focus();
+            }
+            else if (cadastrando && lstDocentes.Any(c => Cpf.formatarCpf(c.Cpf) == Cpf.formatarCpf(cpf.Text)))
+            {
+                sb.Append("Esse CPF já está cadastrado.");
                 cpf.Focus();
             }
 

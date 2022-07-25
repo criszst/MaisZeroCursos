@@ -87,5 +87,33 @@ namespace SistemaMaisZeroCursos.Comum
 
             return lstSt;
         }
+
+        public static List<StatusPeriodo> statusPeriodo()
+        {
+            var lstPeriodo = new List<StatusPeriodo>();
+
+            var manha = new StatusPeriodo
+            {
+                Desc = "Manhã",
+                Id = 1
+            };
+            lstPeriodo.Add(manha);
+
+            var tarde = new StatusPeriodo
+            {
+                Desc = "Tarde",
+                Id = 2
+            };
+            lstPeriodo.Add(tarde);
+
+            var noite = new StatusPeriodo
+            {
+                Desc = "Noite",
+                Id = 3
+            };
+            lstPeriodo.Add(noite);
+
+            return lstPeriodo;
+        }
     }
 }

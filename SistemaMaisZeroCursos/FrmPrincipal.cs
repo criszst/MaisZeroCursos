@@ -124,5 +124,15 @@ namespace SistemaMaisZeroCursos
         {
             MostrarTela(new FrmDocentes());
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            MostrarTela(new FrmDiscentes());
+        }
+
+        private void discentesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MostrarTela(new FrmDiscentes());
+        }
     }
 }

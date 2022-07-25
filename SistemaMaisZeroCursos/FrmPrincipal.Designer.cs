@@ -34,11 +34,13 @@
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disciplinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.discentesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -63,7 +65,8 @@
             // 
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.disciplinasToolStripMenuItem,
-            this.discentesToolStripMenuItem});
+            this.discentesToolStripMenuItem,
+            this.discentesToolStripMenuItem1});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
@@ -83,6 +86,13 @@
             this.discentesToolStripMenuItem.Text = "Docentes";
             this.discentesToolStripMenuItem.Click += new System.EventHandler(this.discentesToolStripMenuItem_Click);
             // 
+            // discentesToolStripMenuItem1
+            // 
+            this.discentesToolStripMenuItem1.Name = "discentesToolStripMenuItem1";
+            this.discentesToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.discentesToolStripMenuItem1.Text = "Discentes";
+            this.discentesToolStripMenuItem1.Click += new System.EventHandler(this.discentesToolStripMenuItem1_Click);
+            // 
             // toolStrip
             // 
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -90,7 +100,8 @@
             this.toolStripSeparator1,
             this.toolStripSeparator2,
             this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripButton3});
             this.toolStrip.Location = new System.Drawing.Point(0, 30);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(843, 27);
@@ -114,7 +125,7 @@
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Text = "Disciplinas";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
@@ -124,8 +135,18 @@
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(29, 24);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Text = "Docentes (Professores)";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::SistemaMaisZeroCursos.Properties.Resources._9023992_student_fill_icon;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton3.Text = "Discentes (Alunos)";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // statusStrip
             // 
@@ -186,6 +207,8 @@
         private ToolStripButton toolStripButton1;
         private ToolStripMenuItem discentesToolStripMenuItem;
         private ToolStripButton toolStripButton2;
+        private ToolStripMenuItem discentesToolStripMenuItem1;
+        private ToolStripButton toolStripButton3;
     }
 }
 

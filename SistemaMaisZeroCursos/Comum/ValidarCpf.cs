@@ -55,8 +55,8 @@
 
         public static string formatarCpf(string cpf)
         {
-           cpf = cpf.Replace(".", "").Replace("-", "");
-           cpf = cpf.Trim();
+            cpf = cpf.Replace(".", "").Replace("-", "");
+            cpf = cpf.Trim();
             return Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
         }
     }

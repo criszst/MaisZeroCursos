@@ -17,4 +17,10 @@
         public int Id { get; set; }
         public string? Desc { get; set; }
     }
+
+    public class StatusPeriodo
+    {
+        public int Id { get; set; }
+        public string? Desc { get; set; }
+    }
 }
