@@ -35,12 +35,14 @@
             this.disciplinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.discentesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.especializaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -66,7 +68,8 @@
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.disciplinasToolStripMenuItem,
             this.discentesToolStripMenuItem,
-            this.discentesToolStripMenuItem1});
+            this.discentesToolStripMenuItem1,
+            this.especializaçãoToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
@@ -93,6 +96,13 @@
             this.discentesToolStripMenuItem1.Text = "Discentes";
             this.discentesToolStripMenuItem1.Click += new System.EventHandler(this.discentesToolStripMenuItem1_Click);
             // 
+            // especializaçãoToolStripMenuItem
+            // 
+            this.especializaçãoToolStripMenuItem.Name = "especializaçãoToolStripMenuItem";
+            this.especializaçãoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.especializaçãoToolStripMenuItem.Text = "Especialização";
+            this.especializaçãoToolStripMenuItem.Click += new System.EventHandler(this.especializaçãoToolStripMenuItem_Click);
+            // 
             // toolStrip
             // 
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -101,7 +111,8 @@
             this.toolStripSeparator2,
             this.toolStripButton1,
             this.toolStripButton2,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.toolStripButton4});
             this.toolStrip.Location = new System.Drawing.Point(0, 30);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(843, 27);
@@ -147,6 +158,16 @@
             this.toolStripButton3.Size = new System.Drawing.Size(29, 24);
             this.toolStripButton3.Text = "Discentes (Alunos)";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::SistemaMaisZeroCursos.Properties.Resources._9194671_construction_worker_contractor_builder_job_icon;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // statusStrip
             // 
@@ -209,6 +230,8 @@
         private ToolStripButton toolStripButton2;
         private ToolStripMenuItem discentesToolStripMenuItem1;
         private ToolStripButton toolStripButton3;
+        private ToolStripMenuItem especializaçãoToolStripMenuItem;
+        private ToolStripButton toolStripButton4;
     }
 }
 

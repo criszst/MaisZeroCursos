@@ -10,15 +10,5 @@ namespace SistemaMaisZeroCursos.Model
         public string? DescricaoStatus { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime DataAtualizacao { get; set; }
-
-        public string Serialize(DisciplinasModel container)
-        {
-            return JsonSerializer.Serialize(container);
-        }
-
-        public static DisciplinasModel Deserialize(string json)
-        {
-            return JsonSerializer.Deserialize<DisciplinasModel>(json);
-        }
     }
 }

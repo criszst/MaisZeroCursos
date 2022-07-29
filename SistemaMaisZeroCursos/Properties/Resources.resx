@@ -121,6 +121,9 @@
   <data name="4763274_instructor_professor_teacher_teaching_tutor_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\4763274_instructor_professor_teacher_teaching_tutor_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="9023992_student_fill_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9023992_student_fill_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="6333176_adherent_apostle_disciple_follower_pupil_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\6333176_adherent_apostle_disciple_follower_pupil_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,6 +136,9 @@
   <data name="2931185_door_enter_exit_leave_out_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2931185_door_enter_exit_leave_out_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="9194671_construction_worker_contractor_builder_job_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9194671_construction_worker_contractor_builder_job_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="211818_search_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\211818_search_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,7 +148,7 @@
   <data name="2931176_diskette_guardar_save_disk_drive_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2931176_diskette_guardar_save_disk_drive_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="9023992_student_fill_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\9023992_student_fill_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="4115238_delete_trash_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4115238_delete_trash_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -1,21 +1,22 @@
 ﻿using SistemaMaisZeroCursos.Model;
+using SistemaMaisZeroCursos.Repository;
 
 namespace SistemaMaisZeroCursos.Comum
 {
     public static class ControlarStatus
     {
-        public static List<StatusDisciplina> CarregarStatus()
+        public static List<ComboBoxCampo> CarregarStatus()
         {
-            var lstStatus = new List<StatusDisciplina>();
+            var lstStatus = new List<ComboBoxCampo>();
 
-            var stAtivo = new StatusDisciplina
+            var stAtivo = new ComboBoxCampo
             {
                 Descricao = "Ativado",
                 Id = 1
             };
             lstStatus.Add(stAtivo);
 
-            var stDesativado = new StatusDisciplina
+            var stDesativado = new ComboBoxCampo
             {
                 Descricao = "Desativado",
                 Id = 2
@@ -25,41 +26,41 @@ namespace SistemaMaisZeroCursos.Comum
             return lstStatus;
         }
 
-        public static List<StatusDocente> StatusDocentes()
+        public static List<ComboBoxCampo> StatusDocentes()
         {
-            var listaStatus = new List<StatusDocente>();
+            var listaStatus = new List<ComboBoxCampo>();
 
-            var ensinoMedio = new StatusDocente
+            var ensinoMedio = new ComboBoxCampo
             {
-                Desc = "Ensino Médio",
+                Descricao = "Ensino Médio",
                 Id = 1
             };
             listaStatus.Add(ensinoMedio);
 
-            var EnsinoSuperior = new StatusDocente
+            var EnsinoSuperior = new ComboBoxCampo
             {
-                Desc = "Ensino Superior",
+                Descricao = "Ensino Superior",
                 Id = 2
             };
             listaStatus.Add(EnsinoSuperior);
 
-            var posGraduacao = new StatusDocente
+            var posGraduacao = new ComboBoxCampo
             {
-                Desc = "Pós-Graduação",
+                Descricao = "Pós-Graduação",
                 Id = 3
             };
             listaStatus.Add(posGraduacao);
 
-            var Mestrado = new StatusDocente
+            var Mestrado = new ComboBoxCampo
             {
-                Desc = "Mestrado",
+                Descricao = "Mestrado",
                 Id = 4
             };
             listaStatus.Add(Mestrado);
 
-            var Doutorado = new StatusDocente
+            var Doutorado = new ComboBoxCampo
             {
-                Desc = "Doutorado",
+                Descricao = "Doutorado",
                 Id = 5
             };
             listaStatus.Add(Doutorado);
@@ -67,20 +68,20 @@ namespace SistemaMaisZeroCursos.Comum
             return listaStatus;
         }
 
-        public static List<StatusSexo> statusSexo()
+        public static List<ComboBoxCampo> statusSexo()
         {
-            var lstSt = new List<StatusSexo>();
+            var lstSt = new List<ComboBoxCampo>();
 
-            var masculino = new StatusSexo
+            var masculino = new ComboBoxCampo
             {
-                Desc = "Masculino",
+                Descricao = "Masculino",
                 Id = 1
             };
             lstSt.Add(masculino);
 
-            var feminino = new StatusSexo
+            var feminino = new ComboBoxCampo
             {
-                Desc = "Feminino",
+                Descricao = "Feminino",
                 Id = 2
             };
             lstSt.Add(feminino);
@@ -88,32 +89,69 @@ namespace SistemaMaisZeroCursos.Comum
             return lstSt;
         }
 
-        public static List<StatusPeriodo> statusPeriodo()
+        public static List<ComboBoxCampo> statusPeriodo()
         {
-            var lstPeriodo = new List<StatusPeriodo>();
+            var lstPeriodo = new List<ComboBoxCampo>();
 
-            var manha = new StatusPeriodo
+            var manha = new ComboBoxCampo
             {
-                Desc = "Manhã",
+                Descricao = "Manhã",
                 Id = 1
             };
             lstPeriodo.Add(manha);
 
-            var tarde = new StatusPeriodo
+            var tarde = new ComboBoxCampo
             {
-                Desc = "Tarde",
+                Descricao = "Tarde",
                 Id = 2
             };
             lstPeriodo.Add(tarde);
 
-            var noite = new StatusPeriodo
+            var noite = new ComboBoxCampo
             {
-                Desc = "Noite",
+                Descricao = "Noite",
                 Id = 3
             };
             lstPeriodo.Add(noite);
 
             return lstPeriodo;
+        }
+
+        public static List<DisciplinasModel> DisciplinaEspecializada()
+        {
+            var repository = new DisciplinaRespository();
+            var carregarDados = repository.CarregarTodosDados();
+
+            return carregarDados.Where(l => l.IdStatus != 2).ToList();
+        }
+     
+        public static List<DocentesModel> NomeProfessor()
+        {
+            var repository = new DocentesRepository();
+            var carregarDados = repository.CarregarDados();
+
+            return carregarDados.Where(l => l.IdStatus != 2).ToList(); ;
+        }
+
+        public static List<ComboBoxCampo> BuscaFiltro()
+        {
+            var lstFiltro = new List<ComboBoxCampo>();
+
+            var professor = new ComboBoxCampo
+            {
+                Descricao = "Professor",
+                Id = 1
+            };
+            lstFiltro.Add(professor);
+
+            var disciplina = new ComboBoxCampo
+            {
+                Descricao = "Disciplina",
+                Id = 2
+            };
+            lstFiltro.Add(disciplina);
+
+            return lstFiltro;
         }
     }
 }

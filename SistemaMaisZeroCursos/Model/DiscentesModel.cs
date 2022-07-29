@@ -19,7 +19,7 @@ namespace SistemaMaisZeroCursos.Model
 
         public DateTime? DataNascimento { get; set; }
 
-        public string Status { get; set; }
+        public string ?Status { get; set; }
 
         public int IdStatus { get; set; }
 
@@ -31,15 +31,5 @@ namespace SistemaMaisZeroCursos.Model
         public DateTime DataCadastro { get; set; }
 
         public DateTime DataAtualizacao { get; set; }
-
-        public string Serialize(DiscentesModel container)
-        {
-            return JsonSerializer.Serialize(container);
-        }
-
-        public static DiscentesModel Deserialize(string json)
-        {
-            return JsonSerializer.Deserialize<DiscentesModel>(json);
-        }
     }
 }

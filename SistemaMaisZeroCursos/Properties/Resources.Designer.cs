@@ -113,6 +113,16 @@ namespace SistemaMaisZeroCursos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4115238_delete_trash_icon {
+            get {
+                object obj = ResourceManager.GetObject("4115238_delete_trash_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _4763274_instructor_professor_teacher_teaching_tutor_icon {
             get {
                 object obj = ResourceManager.GetObject("4763274_instructor_professor_teacher_teaching_tutor_icon", resourceCulture);
@@ -146,6 +156,16 @@ namespace SistemaMaisZeroCursos.Properties {
         internal static System.Drawing.Bitmap _9133514_signup_register_login_icon {
             get {
                 object obj = ResourceManager.GetObject("9133514_signup_register_login_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9194671_construction_worker_contractor_builder_job_icon {
+            get {
+                object obj = ResourceManager.GetObject("9194671_construction_worker_contractor_builder_job_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

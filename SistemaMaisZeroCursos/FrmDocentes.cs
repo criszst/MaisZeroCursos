@@ -100,7 +100,7 @@ namespace SistemaMaisZeroCursos
         private void FrmDocentes_Load(object sender, EventArgs e)
         {
             cboGrauEscolaridade.DataSource = ControlarStatus.StatusDocentes();
-            cboGrauEscolaridade.DisplayMember = "Desc";
+            cboGrauEscolaridade.DisplayMember = "Descricao";
             cboGrauEscolaridade.ValueMember = "Id";
 
             cboStatus.DataSource = ControlarStatus.CarregarStatus();
@@ -108,7 +108,7 @@ namespace SistemaMaisZeroCursos
             cboStatus.ValueMember = "Id";
 
             cboSexo.DataSource = ControlarStatus.statusSexo();
-            cboSexo.DisplayMember = "Desc";
+            cboSexo.DisplayMember = "Descricao";
             cboSexo.ValueMember = "Id";
 
             MostrarDadosTela();

@@ -95,11 +95,11 @@ namespace SistemaMaisZeroCursos
         private void FrmDiscentes_Load(object sender, EventArgs e)
         {
             cboPeriodo.DataSource = ControlarStatus.statusPeriodo();
-            cboPeriodo.DisplayMember = "Desc";
+            cboPeriodo.DisplayMember = "Descricao";
             cboPeriodo.ValueMember = "Id";
 
             cboSexo.DataSource = ControlarStatus.statusSexo();
-            cboSexo.DisplayMember = "Desc";
+            cboSexo.DisplayMember = "Descricao";
             cboSexo.ValueMember = "Id";
 
             cboStatus.DataSource = ControlarStatus.CarregarStatus();
