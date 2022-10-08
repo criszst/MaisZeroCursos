@@ -1,18 +1,26 @@
-﻿using System.Text.Json;
-using SistemaMaisZeroCursos.Arquivos;
-using SistemaMaisZeroCursos.Constant;
-using MaisZeroCursos.DTO.Model;
+﻿using MaisZeroCursos.DTO.Model;
+using MaisZeroCursosWebApi.Arquivos;
+using MaisZeroCursosWebApi.Constant;
+using MaisZeroCursosWebApi.Repository.Interface;
+using System.Text.Json;
 
-namespace SistemaMaisZeroCursos.Repository
+namespace MaisZeroCursosWebApi.Repository
 {
-    public class EspecializacaoRepository
+    public class EspecializacaoRepository : IEspecializacaoRepository
     {
-        public List<EspecializacaoModel> Cadastrar(string nomeProfessor, int idProfessor, string especializacao, int idEspecializacao,
-            DateTime dataCadastro)
-        {
-            var arquivo = new ioFile();
 
-            var lstEspecializacao = CarregarDados();
+        private IConfiguration _Configuration;
+        public EspecializacaoRepository(IConfiguration Configuration)
+        {
+            _Configuration = Configuration;
+        }
+
+        public List<EspecializacaoModel> Cadastrar(string nomeProfessor, int idProfessor, string especializacao, int idEspecializacao,
+           DateTime dataCadastro)
+        {
+            var arquivo = new ioFile(_Configuration);
+
+            var lstEspecializacao = CarregarTudo();
 
             var especialization = new EspecializacaoModel();
 
@@ -33,7 +41,7 @@ namespace SistemaMaisZeroCursos.Repository
 
         public void Atualizar(EspecializacaoModel especializacao)
         {
-            var lstEspecializacao = CarregarDados();
+            var lstEspecializacao = CarregarTudo();
             if (lstEspecializacao != null && lstEspecializacao.Any() && especializacao.Id > 0)
             {
                 var espFiltrada = lstEspecializacao.Where(c => c.Id == especializacao.Id).FirstOrDefault();
@@ -46,7 +54,7 @@ namespace SistemaMaisZeroCursos.Repository
                     espFiltrada.idEspecializacao = especializacao.idEspecializacao;
                     espFiltrada.DataAtualizacao = especializacao.DataAtualizacao;
 
-                    var arquivo = new ioFile();
+                    var arquivo = new ioFile(_Configuration);
 
                     var arquivoJson = JsonSerializer.Serialize(lstEspecializacao);
                     arquivo.GravarArquivo(arquivoJson, NomeArquivos.Especializacao);
@@ -56,7 +64,7 @@ namespace SistemaMaisZeroCursos.Repository
 
         public void Excluir(EspecializacaoModel especializacao)
         {
-            var lstEspecializacao = CarregarDados();
+            var lstEspecializacao = CarregarTudo();
 
             if (lstEspecializacao != null && lstEspecializacao.Any() && especializacao.Id > 0)
             {
@@ -67,16 +75,16 @@ namespace SistemaMaisZeroCursos.Repository
                     lstEspecializacao.Remove(espFiltrada);
                 }
 
-                var arquivo = new ioFile();
+                var arquivo = new ioFile(_Configuration);
 
                 var arquivoJson = JsonSerializer.Serialize(lstEspecializacao);
                 arquivo.GravarArquivo(arquivoJson, NomeArquivos.Especializacao);
             }
         }
 
-        public List<EspecializacaoModel> CarregarDados()
+        public List<EspecializacaoModel> CarregarTudo()
         {
-            var arquivo = new ioFile();
+            var arquivo = new ioFile(_Configuration);
 
             var arquivoJson = arquivo.LerArquivo(NomeArquivos.Especializacao);
 

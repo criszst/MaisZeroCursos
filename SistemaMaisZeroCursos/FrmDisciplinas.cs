@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
-using SistemaMaisZeroCursos.Model;
+using MaisZeroCursos.DTO.Model;
 
 namespace SistemaMaisZeroCursos
 {

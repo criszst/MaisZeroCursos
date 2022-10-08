@@ -1,4 +1,4 @@
-﻿using SistemaMaisZeroCursos.Model;
+﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Repository;
 
 namespace SistemaMaisZeroCursos.Comum

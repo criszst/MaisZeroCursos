@@ -1,18 +1,25 @@
-﻿using SistemaMaisZeroCursos.Constant;
-using SistemaMaisZeroCursos.Arquivos;
+﻿using MaisZeroCursos.DTO.Model;
+using MaisZeroCursosWebApi.Arquivos;
+using MaisZeroCursosWebApi.Constant;
+using MaisZeroCursosWebApi.Repository.Interface;
 using System.Text.Json;
-using MaisZeroCursos.DTO.Model;
 
-namespace SistemaMaisZeroCursos.Repository
+namespace MaisZeroCursosWebApi.Repository
 {
-    public class DocentesRepository
+    public class DocentesRepository : IDocentesRepository
     {
-        public List<DocentesModel> Cadastrar(string name, string cpf, string sexo, int idSexo,
-            DateTime dtNascimento, string DescStatus, int idStatus,   string DescGrauEscolar, int idGrauEscolar, DateTime dtCadastro)
+        private IConfiguration _Configuration;
+        public DocentesRepository(IConfiguration Configuration)
         {
-            var arquivo = new ioFile();
+            _Configuration = Configuration;
+        }
 
-            var lstDocentes = CarregarDados();
+        public List<DocentesModel> Cadastrar(string name, string cpf, string sexo, int idSexo,
+           DateTime dtNascimento, string DescStatus, int idStatus, string DescGrauEscolar, int idGrauEscolar, DateTime dtCadastro)
+        {
+            var arquivo = new ioFile(_Configuration);
+
+            var lstDocentes = CarregarTudo();
 
             var docente = new DocentesModel();
 
@@ -43,7 +50,7 @@ namespace SistemaMaisZeroCursos.Repository
 
         public void Atualizar(DocentesModel docentes)
         {
-            var lstDocentes = CarregarDados();
+            var lstDocentes = CarregarTudo();
 
             if (lstDocentes != null && lstDocentes.Any() && docentes.Id > 0)
             {
@@ -67,7 +74,7 @@ namespace SistemaMaisZeroCursos.Repository
 
                     docentesFiltro.DataAtualizacao = docentes.DataAtualizacao;
 
-                    var arquivo = new ioFile();
+                    var arquivo = new ioFile(_Configuration);
 
                     var arquivoJson = JsonSerializer.Serialize(lstDocentes);
                     arquivo.GravarArquivo(arquivoJson, NomeArquivos.Docentes);
@@ -75,9 +82,9 @@ namespace SistemaMaisZeroCursos.Repository
             }
         }
 
-        public List<DocentesModel> CarregarDados()
+        public List<DocentesModel> CarregarTudo()
         {
-            var arquivo = new ioFile();
+            var arquivo = new ioFile(_Configuration);
 
             var arquivoJson = arquivo.LerArquivo(NomeArquivos.Docentes);
 

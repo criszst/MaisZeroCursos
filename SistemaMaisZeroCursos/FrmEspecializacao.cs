@@ -1,8 +1,7 @@
 ﻿using System.Text;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
-using SistemaMaisZeroCursos.Model;
-using System.Linq;
+using MaisZeroCursos.DTO.Model;
 
 namespace SistemaMaisZeroCursos
 {
@@ -173,6 +172,7 @@ namespace SistemaMaisZeroCursos
             var msg = Validar();
             if (string.IsNullOrEmpty(msg))
             {
+                string tipoAcao = "Cadastro";
                 if (cadastrando)
                 {
                     Registrar();
@@ -180,10 +180,11 @@ namespace SistemaMaisZeroCursos
                 }
                 else
                 {
+                    tipoAcao = "Atualização";
                     AtualizarRegistro();
                     Recarregar();
                 }
-
+                MessageBox.Show($"{tipoAcao} realizado com sucesso.");
             }
             else
             {
