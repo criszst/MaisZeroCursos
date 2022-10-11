@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MaisZeroCursos.Repository\MaisZeroCursos.Repository.csproj" />
+    <Using Include="MaisZeroCursos.Class.Repository"/>
+    <Using Include="MaisZeroCursos.DomainModel.Interface"/>
+    <Using Include="MaisZeroCursos.DTO.Model"/>
+    <Using Include="MaisZeroCursos.Repository.Interface"/>
+    <Using Include="Microsoft.Extensions.Configuration"/>
+    <Using Include="MaisZeroCursos.Repository.Class"/>
   </ItemGroup>
 
 </Project>

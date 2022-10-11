@@ -1,8 +1,4 @@
-﻿using MaisZeroCursos.Class.Repository;
-using MaisZeroCursos.DomainModel.Interface;
-using MaisZeroCursos.DTO.Model;
-using MaisZeroCursos.Repository.Interface;
-using Microsoft.Extensions.Configuration;
+﻿
 
 namespace MaisZeroCursos.DomainModel.Class
 {

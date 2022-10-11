@@ -7,18 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Arquivos\**" />
+    <Compile Remove="Constant\**" />
     <Compile Remove="DomainModel\**" />
     <Compile Remove="Repository\**" />
+    <Content Remove="Arquivos\**" />
+    <Content Remove="Constant\**" />
     <Content Remove="DomainModel\**" />
     <Content Remove="Repository\**" />
+    <EmbeddedResource Remove="Arquivos\**" />
+    <EmbeddedResource Remove="Constant\**" />
     <EmbeddedResource Remove="DomainModel\**" />
     <EmbeddedResource Remove="Repository\**" />
+    <None Remove="Arquivos\**" />
+    <None Remove="Constant\**" />
     <None Remove="DomainModel\**" />
     <None Remove="Repository\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <Using Include="MaisZeroCursos.DTO.Model"/>
+    <Using Include="MaisZeroCursos.DomainModel.Class"/>
+    <Using Include="MaisZeroCursos.DomainModel.Interface"/>
   </ItemGroup>
 
   <ItemGroup>

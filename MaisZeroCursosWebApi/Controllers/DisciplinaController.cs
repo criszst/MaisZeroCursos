@@ -1,7 +1,4 @@
-﻿using MaisZeroCursos.DTO.Model;
-using MaisZeroCursos.DomainModel.Class;
-using MaisZeroCursos.DomainModel.Interface;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace MaisZeroCursosWebApi.Controllers
 {

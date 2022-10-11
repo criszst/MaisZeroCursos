@@ -1,4 +1,4 @@
-﻿using MaisZeroCursos.DTO.Model;
+﻿
 
 namespace MaisZeroCursos.DomainModel.Interface
 {
