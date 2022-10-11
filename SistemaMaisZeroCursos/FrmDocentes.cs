@@ -1,7 +1,7 @@
-﻿using System.Text;
+﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
-using MaisZeroCursos.DTO.Model;
+using System.Text;
 
 namespace SistemaMaisZeroCursos
 {
@@ -28,13 +28,14 @@ namespace SistemaMaisZeroCursos
 
             DateTime idadeCorreta = Convert.ToDateTime(DateTime.Now.AddYears(-18).ToShortDateString());
 
-             if (name.Text.Length < 4)
+            if (name.Text.Length < 4)
             {
                 sb.Append("O nome deve ter pelo menos 4 letras");
                 name.Focus();
             }
 
-            else if (!Cpf.validar(cpf.Text)) {
+            else if (!Cpf.validar(cpf.Text))
+            {
                 sb.Append("O CPF não é válido.");
                 cpf.Focus();
             }
@@ -261,7 +262,7 @@ namespace SistemaMaisZeroCursos
 
                 DataAtualizacao = DateTime.UtcNow.AddHours(-3),
             };
-                docentesRepository.Atualizar(docenteModel);
+            docentesRepository.Atualizar(docenteModel);
 
         }
 

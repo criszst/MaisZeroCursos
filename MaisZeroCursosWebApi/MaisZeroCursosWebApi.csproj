@@ -7,10 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DomainModel\**" />
+    <Compile Remove="Repository\**" />
+    <Content Remove="DomainModel\**" />
+    <Content Remove="Repository\**" />
+    <EmbeddedResource Remove="DomainModel\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <None Remove="DomainModel\**" />
+    <None Remove="Repository\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MaisZeroCursos.DomainModel\MaisZeroCursos.DomainModel.csproj" />
     <ProjectReference Include="..\MiasZeroCursos.DTO\MaisZeroCursos.DTO.csproj" />
   </ItemGroup>
 

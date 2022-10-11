@@ -1,6 +1,6 @@
 ﻿using MaisZeroCursos.DTO.Model;
 
-namespace MaisZeroCursosWebApi.DomainModel.Interface
+namespace MaisZeroCursos.DomainModel.Interface
 {
     public interface IDisciplinaDomainModel : IDomainModelBase<DisciplinasModel>
     {

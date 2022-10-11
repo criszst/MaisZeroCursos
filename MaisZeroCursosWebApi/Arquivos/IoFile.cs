@@ -1,8 +1,4 @@
-﻿using System.IO;
-using System.Configuration;
-using Microsoft.Extensions.Configuration;
-
-namespace MaisZeroCursosWebApi.Arquivos
+﻿namespace MaisZeroCursosWebApi.Arquivos
 {
     public class ioFile
     {

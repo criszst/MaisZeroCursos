@@ -5,9 +5,13 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaMaisZeroCursos", "SistemaMaisZeroCursos\SistemaMaisZeroCursos.csproj", "{F6D538B0-2F40-4568-8166-D06F613A2BF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisZeroCursosWebApi", "MaisZeroCursosWebApi\MaisZeroCursosWebApi.csproj", "{06C2CFEC-BE29-48AB-A93F-632F9854867D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisZeroCursosWebApi", "MaisZeroCursosWebApi\MaisZeroCursosWebApi.csproj", "{06C2CFEC-BE29-48AB-A93F-632F9854867D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisZeroCursos.DTO", "MiasZeroCursos.DTO\MaisZeroCursos.DTO.csproj", "{38810F77-C272-4695-A1FC-97382FE05CA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisZeroCursos.DTO", "MiasZeroCursos.DTO\MaisZeroCursos.DTO.csproj", "{38810F77-C272-4695-A1FC-97382FE05CA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisZeroCursos.Repository", "MaisZeroCursos.Repository\MaisZeroCursos.Repository.csproj", "{53D25C81-24B0-41E3-A9F4-4D818C21D362}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisZeroCursos.DomainModel", "MaisZeroCursos.DomainModel\MaisZeroCursos.DomainModel.csproj", "{E99689B7-9780-4582-BB4F-38DBA7BC992E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{38810F77-C272-4695-A1FC-97382FE05CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38810F77-C272-4695-A1FC-97382FE05CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38810F77-C272-4695-A1FC-97382FE05CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D25C81-24B0-41E3-A9F4-4D818C21D362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D25C81-24B0-41E3-A9F4-4D818C21D362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D25C81-24B0-41E3-A9F4-4D818C21D362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D25C81-24B0-41E3-A9F4-4D818C21D362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99689B7-9780-4582-BB4F-38DBA7BC992E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99689B7-9780-4582-BB4F-38DBA7BC992E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99689B7-9780-4582-BB4F-38DBA7BC992E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99689B7-9780-4582-BB4F-38DBA7BC992E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,6 @@
 ﻿using MaisZeroCursos.DTO.Model;
-using MaisZeroCursosWebApi.DomainModel;
-using MaisZeroCursosWebApi.DomainModel.Interface;
-using MaisZeroCursosWebApi.Repository;
-using MaisZeroCursosWebApi.Repository.Interface;
+using MaisZeroCursos.DomainModel.Class;
+using MaisZeroCursos.DomainModel.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaisZeroCursosWebApi.Controllers
@@ -33,7 +31,7 @@ namespace MaisZeroCursosWebApi.Controllers
         [HttpPut("Atualizar")]
         public void Atualizar([FromBody] EspecializacaoModel especializacaoModel)
         {
-             _especializacaoDomainModel.Atualizar(especializacaoModel);
+            _especializacaoDomainModel.Atualizar(especializacaoModel);
         }
 
 

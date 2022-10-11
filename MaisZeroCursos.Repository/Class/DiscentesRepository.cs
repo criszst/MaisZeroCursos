@@ -1,17 +1,24 @@
 ﻿using MaisZeroCursos.DTO.Model;
-using SistemaMaisZeroCursos.Arquivos;
-using SistemaMaisZeroCursos.Constant;
+using MaisZeroCursos.Repository.Interface;
+using MaisZeroCursosWebApi.Arquivos;
+using MaisZeroCursosWebApi.Constant;
+using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 
-namespace SistemaMaisZeroCursos.Repository
+namespace MaisZeroCursos.Class.Repository
 {
-    public class DiscentesRepository
+    public class DiscentesRepository : IDiscentesRepository
     {
-        public List<DiscentesModel> Cadastrar(string name, string cpf, string sexoDiscente, int idSexo, DateTime dataNascimento,
-            string status, int idStatus, string Periodo, int idPeriodo, DateTime dtCadastro)
+        private IConfiguration _Configuration;
+        public DiscentesRepository(IConfiguration Configuration)
         {
-            var arquivo = new ioFile();
-            var lstDiscentes = CarregarDados();
+            _Configuration = Configuration;
+        }
+        public List<DiscentesModel> Cadastrar(string name, string cpf, string sexoDiscente, int idSexo, DateTime dataNascimento,
+            string status, int idStatus, string Periodo, int idPeriodo)
+        {
+            var arquivo = new ioFile(_Configuration);
+            var lstDiscentes = CarregarTudo();
 
             var discente = new DiscentesModel();
 
@@ -29,7 +36,7 @@ namespace SistemaMaisZeroCursos.Repository
             discente.Periodo = Periodo;
             discente.idPeriodo = idPeriodo;
 
-            discente.DataCadastro = dtCadastro;
+            discente.DataCadastro = DateTime.Now;
 
             lstDiscentes.Add(discente);
 
@@ -41,7 +48,7 @@ namespace SistemaMaisZeroCursos.Repository
 
         public void Atualizar(DiscentesModel discentes)
         {
-            var lstDiscentes = CarregarDados();
+            var lstDiscentes = CarregarTudo();
 
             if (lstDiscentes != null && lstDiscentes.Any() && discentes.Id > 0)
             {
@@ -65,7 +72,7 @@ namespace SistemaMaisZeroCursos.Repository
 
                     discentesFiltro.DataAtualizacao = discentes.DataAtualizacao;
 
-                    var arquivo = new ioFile();
+                    var arquivo = new ioFile(_Configuration);
 
                     var arquivoJson = JsonSerializer.Serialize(lstDiscentes);
                     arquivo.GravarArquivo(arquivoJson, NomeArquivos.Discentes);
@@ -73,9 +80,9 @@ namespace SistemaMaisZeroCursos.Repository
             }
         }
 
-        public List<DiscentesModel> CarregarDados()
+        public List<DiscentesModel> CarregarTudo()
         {
-            var arquivo = new ioFile();
+            var arquivo = new ioFile(_Configuration);
 
             var arquivoJson = arquivo.LerArquivo(NomeArquivos.Discentes);
 

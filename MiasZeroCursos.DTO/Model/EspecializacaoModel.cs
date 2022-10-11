@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MaisZeroCursos.DTO.Model
+﻿namespace MaisZeroCursos.DTO.Model
 {
     public class EspecializacaoModel
     {

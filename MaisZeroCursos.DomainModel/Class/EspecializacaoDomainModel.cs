@@ -1,9 +1,10 @@
-﻿using MaisZeroCursos.DTO.Model;
-using MaisZeroCursosWebApi.DomainModel.Interface;
-using MaisZeroCursosWebApi.Repository;
-using MaisZeroCursosWebApi.Repository.Interface;
+﻿using MaisZeroCursos.DomainModel.Interface;
+using MaisZeroCursos.DTO.Model;
+using MaisZeroCursos.Repository.Class;
+using MaisZeroCursos.Repository.Interface;
+using Microsoft.Extensions.Configuration;
 
-namespace MaisZeroCursosWebApi.DomainModel
+namespace MaisZeroCursos.DomainModel.Class
 {
     public class EspecializacaoDomainModel : IEspecializacaoDomainModel
     {

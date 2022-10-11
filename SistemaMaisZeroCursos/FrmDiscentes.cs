@@ -1,7 +1,7 @@
-﻿using System.Text;
+﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
-using MaisZeroCursos.DTO.Model;
+using System.Text;
 
 namespace SistemaMaisZeroCursos
 {
@@ -71,7 +71,7 @@ namespace SistemaMaisZeroCursos
             var periodo = cboPeriodo.Text;
             var idPeriodo = Convert.ToInt32(cboPeriodo.SelectedValue);
 
-            List<DiscentesModel>? lstDiscente = DiscenteRepository.Cadastrar(name, cpf, cbSexo, idCboSexo, 
+            List<DiscentesModel>? lstDiscente = DiscenteRepository.Cadastrar(name, cpf, cbSexo, idCboSexo,
                 dataNascimento, txtStatus, idStatus, periodo, idPeriodo,
                 DateTime.Now);
 
@@ -116,7 +116,7 @@ namespace SistemaMaisZeroCursos
             this.Close();
         }
 
-       
+
         public void Pesquisar()
         {
             var discentesFiltro = lstDiscentes.Where(n => n.Name.Contains(txtSearch.Text)).ToList();
@@ -129,7 +129,8 @@ namespace SistemaMaisZeroCursos
             if (!string.IsNullOrEmpty(txtSearch.Text))
             {
                 Pesquisar();
-            } else
+            }
+            else
             {
                 MostrarDadosTela();
             }
@@ -217,7 +218,8 @@ namespace SistemaMaisZeroCursos
                 {
                     Registro();
                     Recarregar();
-                } else
+                }
+                else
                 {
                     AtualizarRegistro();
 

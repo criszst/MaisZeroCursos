@@ -1,14 +1,17 @@
-﻿using System.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
-namespace SistemaMaisZeroCursos.Arquivos
+namespace MaisZeroCursosWebApi.Arquivos
 {
     public class ioFile
     {
         private string CaminhoArquivo { get; set; }
 
-        public ioFile()
+        private IConfiguration _Configuration;
+
+        public ioFile(IConfiguration Configuration)
         {
-            CaminhoArquivo = ConfigurationManager.AppSettings["Path"]!;
+            _Configuration = Configuration;
+            CaminhoArquivo = _Configuration["Caminho"];
 
             if (!Directory.Exists(CaminhoArquivo))
             {

@@ -1,8 +1,7 @@
 ﻿using MaisZeroCursos.DTO.Model;
-using MaisZeroCursosWebApi.DomainModel;
-using MaisZeroCursosWebApi.DomainModel.Interface;
+using MaisZeroCursos.DomainModel.Class;
+using MaisZeroCursos.DomainModel.Interface;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography.X509Certificates;
 
 namespace MaisZeroCursosWebApi.Controllers
 {
@@ -38,7 +37,8 @@ namespace MaisZeroCursosWebApi.Controllers
             {
                 _disciplinaDomainModel.Atualizar(disciplinas);
                 atualizou = true;
-            } catch
+            }
+            catch
             {
                 atualizou = false;
             }

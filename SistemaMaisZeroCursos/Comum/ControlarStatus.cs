@@ -124,7 +124,7 @@ namespace SistemaMaisZeroCursos.Comum
 
             return carregarDados.Where(l => l.IdStatus != 2).ToList();
         }
-     
+
         public static List<DocentesModel> NomeProfessor()
         {
             var repository = new DocentesRepository();

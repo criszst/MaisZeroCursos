@@ -1,7 +1,7 @@
-﻿using System.Text;
+﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
-using MaisZeroCursos.DTO.Model;
+using System.Text;
 
 namespace SistemaMaisZeroCursos
 {
@@ -30,7 +30,8 @@ namespace SistemaMaisZeroCursos
                 sbMsg.Append("O nome da disciplina não pode ter menos que 5 letras.");
                 txtDisciplinas.Focus();
 
-            } else if (LstDisciplinas.Any(d => d.NomeDisciplina == txtDisciplinas.Text))
+            }
+            else if (LstDisciplinas.Any(d => d.NomeDisciplina == txtDisciplinas.Text))
             {
                 sbMsg.Append("Já existe uma disciplina cadastrada com esse nome.");
                 txtDisciplinas.Focus();
@@ -56,12 +57,12 @@ namespace SistemaMaisZeroCursos
 
         private void FrmDisciplinas_Load(object sender, EventArgs e)
         {
-          
+
         }
 
         private void btnCadastro_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -89,7 +90,7 @@ namespace SistemaMaisZeroCursos
 
         private void dgvDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-         
+
             if (e.RowIndex > -1)
             {
                 txtDisciplinas.Text = dgvDados.Rows[e.RowIndex].Cells["NomeDisciplina"].Value.ToString();
@@ -105,7 +106,8 @@ namespace SistemaMaisZeroCursos
             if (!string.IsNullOrEmpty(txtPesquisa.Text))
             {
                 Pesquisar();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Digite um valor para pesquisar");
             }
@@ -129,7 +131,8 @@ namespace SistemaMaisZeroCursos
             if (!string.IsNullOrEmpty(txtPesquisa.Text))
             {
                 Pesquisar();
-            } else
+            }
+            else
             {
                 MostrarDados(LstDisciplinas);
             }
@@ -171,17 +174,18 @@ namespace SistemaMaisZeroCursos
             var msg = Validar();
             if (string.IsNullOrEmpty(msg))
             {
-                if(cadastrando)
+                if (cadastrando)
                 {
                     Registrar();
                     Recarregar();
-                } else
+                }
+                else
                 {
                     AtualizarRegistro();
 
-                    if (editando) Recarregar(); 
+                    if (editando) Recarregar();
                 }
-              
+
             }
             else
             {

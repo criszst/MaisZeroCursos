@@ -1,4 +1,4 @@
-﻿namespace MaisZeroCursosWebApi.Repository.Interface
+﻿namespace MaisZeroCursos.Repository.Interface
 {
     public interface IRepositoryBase<T> where T : class
     {

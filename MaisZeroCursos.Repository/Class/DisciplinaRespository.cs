@@ -1,17 +1,25 @@
 ﻿using MaisZeroCursos.DTO.Model;
-using SistemaMaisZeroCursos.Arquivos;
-using SistemaMaisZeroCursos.Constant;
+using MaisZeroCursos.Repository.Interface;
+using MaisZeroCursosWebApi.Arquivos;
+using MaisZeroCursosWebApi.Constant;
+using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 
-namespace SistemaMaisZeroCursos.Repository
+namespace MaisZeroCursos.Repository.Class
 {
-    public class DisciplinaRespository
+    public class DisciplinaRespository : IDisciplinaRepository
     {
+        private IConfiguration _Configuration;
+        public DisciplinaRespository(IConfiguration Configuration)
+        {
+            _Configuration = Configuration;
+        }
+
         public List<DisciplinasModel> Cadastrar(string name, int idStatus, string descricao, DateTime dataCadastro)
         {
-            var arquivo = new ioFile();
+            var arquivo = new ioFile(_Configuration);
 
-            var lstDisciplina = CarregarTodosDados();
+            var lstDisciplina = CarregarTudo();
 
             var Disciplina = new DisciplinasModel();
 
@@ -31,7 +39,7 @@ namespace SistemaMaisZeroCursos.Repository
 
         public void Atualizar(DisciplinasModel disciplinas)
         {
-            var lstDisciplinasArquivo = CarregarTodosDados();
+            var lstDisciplinasArquivo = CarregarTudo();
             if (lstDisciplinasArquivo != null && lstDisciplinasArquivo.Any() && disciplinas.Id > 0)
             {
                 var disciplinaFiltrada = lstDisciplinasArquivo.Where(c => c.Id == disciplinas.Id).FirstOrDefault();
@@ -42,7 +50,7 @@ namespace SistemaMaisZeroCursos.Repository
                     disciplinaFiltrada.DescricaoStatus = disciplinas.DescricaoStatus;
                     disciplinaFiltrada.DataAtualizacao = disciplinas.DataAtualizacao;
 
-                    var arquivo = new ioFile();
+                    var arquivo = new ioFile(_Configuration);
 
                     var arquivoJson = JsonSerializer.Serialize(lstDisciplinasArquivo);
                     arquivo.GravarArquivo(arquivoJson, NomeArquivos.Disciplina);
@@ -50,9 +58,9 @@ namespace SistemaMaisZeroCursos.Repository
             }
         }
 
-        public List<DisciplinasModel> CarregarTodosDados()
+        public List<DisciplinasModel> CarregarTudo()
         {
-            var arquivo = new ioFile();
+            var arquivo = new ioFile(_Configuration);
 
             var arquivoJson = arquivo.LerArquivo(NomeArquivos.Disciplina);
 

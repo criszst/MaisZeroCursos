@@ -1,7 +1,7 @@
-﻿using System.Text;
+﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
-using MaisZeroCursos.DTO.Model;
+using System.Text;
 
 namespace SistemaMaisZeroCursos
 {
@@ -73,11 +73,13 @@ namespace SistemaMaisZeroCursos
             {
                 sb.Append("Esse professor já foi vinculado para esta especialização.");
                 cboNmProfessor.Focus();
-            } else if (cadastrando && lstEspecializacao != null && lstEspecializacao.FindAll(l => l.idNomeProfessor == idProfessor).Count == 3)
+            }
+            else if (cadastrando && lstEspecializacao != null && lstEspecializacao.FindAll(l => l.idNomeProfessor == idProfessor).Count == 3)
             {
                 sb.Append("Esse professor já tem o máximo de disciplinas cadastradas possíveis.");
                 cboNmProfessor.Focus();
-            } else if (editando && lstEspecializacao != null && lstEspecializacao.Any(l => l.idEspecializacao == idDisciplina))
+            }
+            else if (editando && lstEspecializacao != null && lstEspecializacao.Any(l => l.idEspecializacao == idDisciplina))
             {
                 sb.Append("Esse professor já foi vinculado para esta especialização.");
                 cboNmProfessor.Focus();
@@ -283,7 +285,8 @@ namespace SistemaMaisZeroCursos
 
                 MessageBox.Show("Excluído com sucesso.");
                 btnExcluir.Enabled = false;
-            } else
+            }
+            else
             {
                 MessageBox.Show("Exclusão negada.");
             }

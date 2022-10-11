@@ -1,4 +1,4 @@
-﻿namespace MaisZeroCursosWebApi.DomainModel.Interface
+﻿namespace MaisZeroCursos.DomainModel.Interface
 {
     public interface IDomainModelBase<T>
         where T : class

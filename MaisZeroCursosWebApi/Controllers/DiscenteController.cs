@@ -1,6 +1,6 @@
-﻿using MaisZeroCursos.DTO.Model;
-using MaisZeroCursosWebApi.DomainModel;
-using MaisZeroCursosWebApi.DomainModel.Interface;
+﻿using MaisZeroCursos.DomainModel.Class;
+using MaisZeroCursos.DomainModel.Interface;
+using MaisZeroCursos.DTO.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaisZeroCursosWebApi.Controllers
@@ -34,7 +34,7 @@ namespace MaisZeroCursosWebApi.Controllers
             _discenteDomainModel.Atualizar(discentesModel);
         }
 
-        [HttpGet("Pesquisar/{nome}")]   
+        [HttpGet("Pesquisar/{nome}")]
         public List<DiscentesModel> Pesquisa(string nome)
         {
             return _discenteDomainModel.PesquisarNome(nome);
