@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisZeroCursosWebApi", "Mai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisZeroCursos.DTO", "MiasZeroCursos.DTO\MaisZeroCursos.DTO.csproj", "{38810F77-C272-4695-A1FC-97382FE05CA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisZeroCursos.Repository", "MaisZeroCursos.Repository\MaisZeroCursos.Repository.csproj", "{53D25C81-24B0-41E3-A9F4-4D818C21D362}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisZeroCursos.Repository", "MaisZeroCursos.Repository\MaisZeroCursos.Repository.csproj", "{53D25C81-24B0-41E3-A9F4-4D818C21D362}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaisZeroCursos.DomainModel", "MaisZeroCursos.DomainModel\MaisZeroCursos.DomainModel.csproj", "{E99689B7-9780-4582-BB4F-38DBA7BC992E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaisZeroCursos.DomainModel", "MaisZeroCursos.DomainModel\MaisZeroCursos.DomainModel.csproj", "{E99689B7-9780-4582-BB4F-38DBA7BC992E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteMaisZero", "WebSiteMaisZero\WebSiteMaisZero.csproj", "{053C2187-BA54-438F-8953-89CCFCAB52DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E99689B7-9780-4582-BB4F-38DBA7BC992E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E99689B7-9780-4582-BB4F-38DBA7BC992E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E99689B7-9780-4582-BB4F-38DBA7BC992E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053C2187-BA54-438F-8953-89CCFCAB52DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053C2187-BA54-438F-8953-89CCFCAB52DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053C2187-BA54-438F-8953-89CCFCAB52DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053C2187-BA54-438F-8953-89CCFCAB52DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

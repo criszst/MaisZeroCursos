@@ -48,7 +48,7 @@ namespace MaisZeroCursos.DomainModel.Class
 
             lstDiscentes = _discentesRepository.CarregarTudo();
 
-            return lstDiscentes.Where(n => n.Name.ToUpper() == nome.ToUpper()).ToList();
+            return lstDiscentes.Where(n => n.Name.ToUpper().Contains(nome.ToUpper())).ToList();
         }
 
         public List<DiscentesModel> CarregarTudo()

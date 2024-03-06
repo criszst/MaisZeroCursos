@@ -29,7 +29,8 @@ namespace MaisZeroCursosWebApi.Controllers
 
         public StatusCodeResult Atualizar(DisciplinasModel disciplinas)
         {
-            bool atualizou = false;
+            bool atualizou;
+
             try
             {
                 _disciplinaDomainModel.Atualizar(disciplinas);

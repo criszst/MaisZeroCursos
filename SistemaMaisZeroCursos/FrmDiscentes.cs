@@ -1,7 +1,10 @@
 ﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
+using SistemaMaisZeroCursos.WebAPI;
+using System.Diagnostics;
 using System.Text;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SistemaMaisZeroCursos
 {
@@ -32,13 +35,13 @@ namespace SistemaMaisZeroCursos
                 name.Focus();
             }
 
-            else if (!Cpf.validar(cpf.Text))
+            else if (!Validar.validar(cpf.Text))
             {
                 sb.Append("O CPF não é válido.");
                 cpf.Focus();
             }
 
-            else if (cadastrando && lstDiscentes.Any(c => c.Cpf == Cpf.formatarCpf(cpf.Text)))
+            else if (cadastrando && lstDiscentes.Any(c => c.Cpf == Validar.formatarCpf(cpf.Text)))
             {
                 sb.Append("Esse CPF já está registrado.");
                 cpf.Focus();
@@ -55,27 +58,25 @@ namespace SistemaMaisZeroCursos
 
         public void Registro()
         {
-            var DiscenteRepository = new DiscentesRepository();
-            _ = new List<DiscentesModel>();
+            var discente = new DiscentesModel()
+            {
+                Name = txtNome.Text,
+                Cpf = Validar.formatarCpf(txtCpf.Text),
 
-            var name = txtNome.Text;
-            var cpf = Cpf.formatarCpf(txtCpf.Text);
-            DateTime dataNascimento = Convert.ToDateTime(dtNascimento.Text);
+                SexoDiscente = cboSexo.Text,
+                IdSexo = Convert.ToInt32(cboSexo.SelectedValue),
 
-            var cbSexo = cboSexo.Text;
-            var idCboSexo = Convert.ToInt32(cboSexo.SelectedValue);
+                DataNascimento = Convert.ToDateTime(dtNascimento.Text),
+                Status = cboStatus.Text,
+                IdStatus = Convert.ToInt32(cboStatus.SelectedValue),
 
-            var txtStatus = cboStatus.Text;
-            var idStatus = Convert.ToInt32(cboStatus.SelectedValue);
+                Periodo = cboPeriodo.Text,
+                idPeriodo = Convert.ToInt32(cboPeriodo.SelectedValue)
+            };
 
-            var periodo = cboPeriodo.Text;
-            var idPeriodo = Convert.ToInt32(cboPeriodo.SelectedValue);
+            var webApi = new DiscenteWebApi();
 
-            List<DiscentesModel>? lstDiscente = DiscenteRepository.Cadastrar(name, cpf, cbSexo, idCboSexo,
-                dataNascimento, txtStatus, idStatus, periodo, idPeriodo,
-                DateTime.Now);
-
-            dgvDadosDiscentes.DataSource = lstDiscente;
+            dgvDadosDiscentes.DataSource = webApi.Cadastrar(discente);
 
         }
 
@@ -119,9 +120,11 @@ namespace SistemaMaisZeroCursos
 
         public void Pesquisar()
         {
-            var discentesFiltro = lstDiscentes.Where(n => n.Name.Contains(txtSearch.Text)).ToList();
+            var webApi = new DiscenteWebApi();
 
-            MostrarDados(discentesFiltro);
+            var lstApi = webApi.PesquisarNome(txtSearch.Text);
+
+            MostrarDados(lstApi);
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -151,10 +154,13 @@ namespace SistemaMaisZeroCursos
 
         private void MostrarDadosTela()
         {
-            var DiscenteRepository = new DiscentesRepository();
+            var webApi = new DiscenteWebApi();
 
-            lstDiscentes = DiscenteRepository.CarregarDados();
-            MostrarDados(lstDiscentes);
+            var lstApi = webApi.CarregarDados();
+            //var DiscenteRepository = new DiscentesRepository();
+
+            //lstDiscentes = DiscenteRepository.CarregarDados();
+            MostrarDados(lstApi);
 
         }
 
@@ -238,15 +244,13 @@ namespace SistemaMaisZeroCursos
 
         public void AtualizarRegistro()
         {
-            var discentesRepository = new DiscentesRepository();
             editando = true;
-
 
             var discenteModel = new DiscentesModel
             {
                 Name = txtNome.Text,
                 Id = int.Parse(txtBoxId.Text),
-                Cpf = Cpf.formatarCpf(txtCpf.Text),
+                Cpf = Validar.formatarCpf(txtCpf.Text),
                 SexoDiscente = cboSexo.Text,
                 IdSexo = Convert.ToInt32(cboSexo.SelectedValue),
 
@@ -260,7 +264,9 @@ namespace SistemaMaisZeroCursos
 
                 DataAtualizacao = DateTime.UtcNow.AddHours(-3),
             };
-            discentesRepository.Atualizar(discenteModel);
+            var webApi = new DiscenteWebApi();
+
+            webApi.Atualizar(discenteModel);
 
         }
 

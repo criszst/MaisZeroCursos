@@ -1,6 +1,6 @@
 ﻿namespace SistemaMaisZeroCursos.Comum
 {
-    public class Cpf
+    public class Validar
     {
         public static bool validar(string cpf)
         {

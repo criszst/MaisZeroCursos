@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\css\css\**" />
+    <Content Remove="wwwroot\css\css\**" />
+    <EmbeddedResource Remove="wwwroot\css\css\**" />
+    <None Remove="wwwroot\css\css\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\mdb.dark.min.css" />
+    <Content Remove="wwwroot\css\mdb.dark.min.css.map" />
+    <Content Remove="wwwroot\css\mdb.dark.rtl.min.css" />
+    <Content Remove="wwwroot\css\mdb.dark.rtl.min.css.map" />
+    <Content Remove="wwwroot\css\mdb.min.css" />
+    <Content Remove="wwwroot\css\mdb.min.css.map" />
+    <Content Remove="wwwroot\css\mdb.rtl.min.css" />
+    <Content Remove="wwwroot\css\mdb.rtl.min.css.map" />
+    <Content Remove="wwwroot\js\mdb.min.js" />
+    <Content Remove="wwwroot\js\mdb.min.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+  </ItemGroup>
+
+</Project>

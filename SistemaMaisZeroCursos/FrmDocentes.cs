@@ -1,6 +1,8 @@
 ﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
+using SistemaMaisZeroCursos.WebAPI;
+using System;
 using System.Text;
 
 namespace SistemaMaisZeroCursos
@@ -34,12 +36,12 @@ namespace SistemaMaisZeroCursos
                 name.Focus();
             }
 
-            else if (!Cpf.validar(cpf.Text))
+            else if (!Validar.validar(cpf.Text))
             {
                 sb.Append("O CPF não é válido.");
                 cpf.Focus();
             }
-            else if (cadastrando && lstDocentes.Any(c => Cpf.formatarCpf(c.Cpf) == Cpf.formatarCpf(cpf.Text)))
+            else if (cadastrando && lstDocentes.Any(c => Validar.formatarCpf(c.Cpf) == Validar.formatarCpf(cpf.Text)))
             {
                 sb.Append("Esse CPF já está cadastrado.");
                 cpf.Focus();
@@ -56,27 +58,27 @@ namespace SistemaMaisZeroCursos
 
         public void Registro()
         {
-            var DocenteRepository = new DocentesRepository();
-            var lstDocente = new List<DocentesModel>();
+            var docente = new DocentesModel
+            {
+                Name = txtNome.Text,
+                Cpf = Validar.formatarCpf(txtCpf.Text),
 
-            var name = txtNome.Text;
-            var cpf = Cpf.formatarCpf(txtCpf.Text);
-            DateTime dataNascimento = Convert.ToDateTime(dtNascimento.Text);
+                SexoDocente = cboSexo.Text,
+                IdSexo = Convert.ToInt32(cboSexo.SelectedValue),
 
-            var cbSexo = cboSexo.Text;
-            var idCboSexo = Convert.ToInt32(cboSexo.SelectedValue);
+                DataNascimento = Convert.ToDateTime(dtNascimento.Text),
 
-            var txtStatus = cboStatus.Text;
-            var idStatus = Convert.ToInt32(cboStatus.SelectedValue);
+                DescStatus = cboStatus.Text,
+                IdStatus = Convert.ToInt32(cboStatus.SelectedValue),
 
-            var grauEscolarTxt = cboGrauEscolaridade.Text;
-            var idGrauEscolar = Convert.ToInt32(cboGrauEscolaridade.SelectedValue);
+                GrauEscolar = cboGrauEscolaridade.Text,
+                IdGrauEscolar = Convert.ToInt32(cboGrauEscolaridade.SelectedValue),
 
-            lstDocente = DocenteRepository.Cadastrar(name, cpf, cbSexo, idCboSexo, dataNascimento, txtStatus, idStatus,
-                grauEscolarTxt, idGrauEscolar,
-                DateTime.Now);
+               DataCadastro = DateTime.Now
+            };
+            var webApi = new DocenteWebApi();
 
-            dgViewDados.DataSource = lstDocente;
+            dgViewDados.DataSource = webApi.Cadastrar(docente);
 
         }
 
@@ -122,9 +124,10 @@ namespace SistemaMaisZeroCursos
 
         public void Pesquisa()
         {
-            var docentesFiltro = lstDocentes.Where(n => n.Name.Contains(txtSearch.Text)).ToList();
+            var webApi = new DocenteWebApi();
+            var pesquisa = webApi.PesquisarNome(txtSearch.Text);
 
-            MostrarDados(docentesFiltro);
+            MostrarDados(pesquisa);
         }
 
         public void MostrarDados(List<DocentesModel> lstDocentes)
@@ -142,11 +145,10 @@ namespace SistemaMaisZeroCursos
 
         private void MostrarDadosTela()
         {
-            var DocenteRepository = new DocentesRepository();
+            var webApi = new DocenteWebApi();
+            var dadosApi = webApi.CarregarDados();
 
-            lstDocentes = DocenteRepository.CarregarDados();
-            MostrarDados(lstDocentes);
-
+            MostrarDados(dadosApi);
         }
 
         private void FormatarGrid()
@@ -211,7 +213,11 @@ namespace SistemaMaisZeroCursos
             }
             else
             {
-                MostrarDados(lstDocentes);
+                var webApi = new DocenteWebApi();
+
+                var lstApi = webApi.CarregarDados();
+
+                MostrarDados(lstApi);
             }
         }
 
@@ -240,15 +246,13 @@ namespace SistemaMaisZeroCursos
 
         public void AtualizarRegistro()
         {
-            var docentesRepository = new DocentesRepository();
             editando = true;
-
 
             var docenteModel = new DocentesModel
             {
                 Name = txtNome.Text,
                 Id = int.Parse(txtBoxId.Text),
-                Cpf = Cpf.formatarCpf(txtCpf.Text),
+                Cpf = Validar.formatarCpf(txtCpf.Text),
                 SexoDocente = cboSexo.Text,
                 IdSexo = Convert.ToInt32(cboSexo.SelectedValue),
 
@@ -262,7 +266,9 @@ namespace SistemaMaisZeroCursos
 
                 DataAtualizacao = DateTime.UtcNow.AddHours(-3),
             };
-            docentesRepository.Atualizar(docenteModel);
+            var webApi = new DocenteWebApi();
+
+            webApi.Atualizar(docenteModel);
 
         }
 

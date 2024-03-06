@@ -1,6 +1,4 @@
-﻿
-
-namespace MaisZeroCursos.DomainModel.Interface
+﻿namespace MaisZeroCursos.DomainModel.Interface
 {
     public interface IDiscenteDomainModel : IDomainModelBase<DiscentesModel>
     {

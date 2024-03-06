@@ -1,6 +1,8 @@
 ﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
+using SistemaMaisZeroCursos.WebAPI;
+using System;
 using System.Text;
 
 namespace SistemaMaisZeroCursos
@@ -52,13 +54,24 @@ namespace SistemaMaisZeroCursos
 
             if (cboNmProfessor.SelectedIndex != -1 && cboDisciplina.SelectedIndex != -1)
             {
-                var nmProfessor = cboNmProfessor.Text;
-                var idProfessor = Convert.ToInt32(cboNmProfessor.SelectedValue);
-                var disciplina = cboDisciplina.Text;
-                var idDisciplina = Convert.ToInt32(cboDisciplina.SelectedValue);
+                var especializacao = new EspecializacaoModel
+                {
+                    NomeProfessor = cboNmProfessor.Text,
+                    idNomeProfessor = Convert.ToInt32(cboNmProfessor.SelectedValue),
+                    Especializacao = cboDisciplina.Text,
+                    idEspecializacao = Convert.ToInt32(cboDisciplina.SelectedValue),
+                    DataCadastro = DateTime.UtcNow.AddHours(-3),
+                };
+                //var nmProfessor = cboNmProfessor.Text;
+                //var idProfessor = Convert.ToInt32(cboNmProfessor.SelectedValue);
+                //var disciplina = cboDisciplina.Text;
+                //var idDisciplina = Convert.ToInt32(cboDisciplina.SelectedValue);
 
-                lstEspecializacao = repository.Cadastrar(nmProfessor, idProfessor, disciplina, idDisciplina, DateTime.UtcNow.AddHours(-3));
-                dgvEspecializacao.DataSource = lstEspecializacao;
+                //lstEspecializacao = repository.Cadastrar(nmProfessor, idProfessor, disciplina, idDisciplina, DateTime.UtcNow.AddHours(-3));
+
+                var api = new EspecializacaoWebApi();
+
+                dgvEspecializacao.DataSource = api.Cadastrar(especializacao);
             }
         }
 
@@ -106,7 +119,10 @@ namespace SistemaMaisZeroCursos
             var repository = new EspecializacaoRepository();
 
             lstEspecializacao = repository.CarregarDados();
-            MostrarDados(lstEspecializacao);
+
+            var api = new EspecializacaoWebApi();
+
+            MostrarDados(api.CarregarDados());
 
         }
 
@@ -139,11 +155,20 @@ namespace SistemaMaisZeroCursos
         private void Pesquisa()
         {
             int filtroSelecionado = cboFiltro.SelectedIndex;
+            var api = new EspecializacaoWebApi();
 
             if (filtroSelecionado == 0)
-                MostrarDados(lstEspecializacao.Where(n => n.NomeProfessor.Contains(txtPesquisa.Text)).ToList());
+            {
+                var pesquisa = api.Pesquisar(txtPesquisa.Text, 1);
+                MostrarDados(pesquisa);
+            }
+            //MostrarDados(lstEspecializacao.Where(n => n.NomeProfessor.Contains(txtPesquisa.Text)).ToList());
             else
-                MostrarDados(lstEspecializacao.Where(n => n.Especializacao.Contains(txtPesquisa.Text)).ToList());
+            {
+                var pesquisa = api.Pesquisar(txtPesquisa.Text, 2);
+                MostrarDados(pesquisa);
+            }
+            // MostrarDados(lstEspecializacao.Where(n => n.Especializacao.Contains(txtPesquisa.Text)).ToList());
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
@@ -174,7 +199,7 @@ namespace SistemaMaisZeroCursos
             var msg = Validar();
             if (string.IsNullOrEmpty(msg))
             {
-                string tipoAcao = "Cadastro";
+                string tipoAcao = "Cadastro realizado";
                 if (cadastrando)
                 {
                     Registrar();
@@ -182,11 +207,11 @@ namespace SistemaMaisZeroCursos
                 }
                 else
                 {
-                    tipoAcao = "Atualização";
+                    tipoAcao = "Atualização realizada";
                     AtualizarRegistro();
                     Recarregar();
                 }
-                MessageBox.Show($"{tipoAcao} realizado com sucesso.");
+                MessageBox.Show($"{tipoAcao} com sucesso.");
             }
             else
             {
@@ -248,7 +273,6 @@ namespace SistemaMaisZeroCursos
 
         public void AtualizarRegistro()
         {
-            var repository = new EspecializacaoRepository();
             editando = true;
 
             var especializacaoModel = new EspecializacaoModel
@@ -261,7 +285,8 @@ namespace SistemaMaisZeroCursos
 
                 DataAtualizacao = DateTime.UtcNow.AddHours(-3),
             };
-            repository.Atualizar(especializacaoModel);
+            var api = new EspecializacaoWebApi();
+            api.Atualizar(especializacaoModel);
         }
 
         public void ExcluirRegistro()
@@ -273,15 +298,19 @@ namespace SistemaMaisZeroCursos
 
             if (confirm == DialogResult.Yes)
             {
-                var repository = new EspecializacaoRepository();
+                var api = new EspecializacaoWebApi();
                 editando = true;
 
                 var especializacaoModel = new EspecializacaoModel
                 {
+                    NomeProfessor = cboNmProfessor.Text,
                     Id = int.Parse(txtBoxID.Text),
+                    idNomeProfessor = Convert.ToInt32(cboNmProfessor.SelectedValue),
+                    Especializacao = cboDisciplina.Text,
+                    idEspecializacao = Convert.ToInt32(cboDisciplina.SelectedValue),
                 };
 
-                repository.Excluir(especializacaoModel);
+                api.Excluir(especializacaoModel);
 
                 MessageBox.Show("Excluído com sucesso.");
                 btnExcluir.Enabled = false;

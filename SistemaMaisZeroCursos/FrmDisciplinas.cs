@@ -1,7 +1,9 @@
 ﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Comum;
 using SistemaMaisZeroCursos.Repository;
+using SistemaMaisZeroCursos.WebAPI;
 using System.Text;
+using System.Xml.Linq;
 
 namespace SistemaMaisZeroCursos
 {
@@ -43,15 +45,19 @@ namespace SistemaMaisZeroCursos
 
         private void Registrar()
         {
-            var disciplinarepository = new DisciplinaRespository();
-
             if (cboStatus.SelectedIndex != -1)
             {
-                var txt = txtDisciplinas.Text;
-                var txtStatus = cboStatus.Text;
-                var idStatus = Convert.ToInt32(cboStatus.SelectedValue);
-                LstDisciplinas = disciplinarepository.Cadastrar(txt, idStatus, txtStatus, DateTime.UtcNow.AddHours(-3));
-                dgvDados.DataSource = LstDisciplinas;
+                var disciplina = new DisciplinasModel
+                {
+                    NomeDisciplina = txtDisciplinas.Text,
+                    IdStatus = Convert.ToInt32(cboStatus.SelectedValue),
+                    DescricaoStatus = cboStatus.Text,
+                    DataCadastro = DateTime.UtcNow.AddHours(-3)
+                };
+
+                var webApi = new DisciplinaWebApi();
+
+               dgvDados.DataSource = webApi.Cadastrar(disciplina);
             }
         }
 
@@ -116,6 +122,7 @@ namespace SistemaMaisZeroCursos
         public void MostrarDados(List<DisciplinasModel> lstDisciplina)
         {
             var sourceBinding = new BindingSource();
+
             sourceBinding.DataSource = lstDisciplina;
 
             dgvDados.DataSource = sourceBinding;
@@ -134,15 +141,21 @@ namespace SistemaMaisZeroCursos
             }
             else
             {
-                MostrarDados(LstDisciplinas);
+                var webApi = new DisciplinaWebApi();
+
+                var lstApi = webApi.CarregarDados();
+                
+                MostrarDados(lstApi);
             }
         }
 
         public void Pesquisar()
         {
-            var lstDisciplinaFiltrada = LstDisciplinas.Where(n => n.NomeDisciplina.Contains(txtPesquisa.Text)).ToList();
+            var webApi = new DisciplinaWebApi();
 
-            MostrarDados(lstDisciplinaFiltrada);
+            var pesquisa = webApi.PesquisarNome(txtPesquisa.Text);
+
+            MostrarDados(pesquisa);
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -210,10 +223,11 @@ namespace SistemaMaisZeroCursos
 
         private void MostrarDadosTela()
         {
-            var disciplinarepository = new DisciplinaRespository();
+            var webApi = new DisciplinaWebApi();
 
-            LstDisciplinas = disciplinarepository.CarregarTodosDados();
-            MostrarDados(LstDisciplinas);
+            var lstApi = webApi.CarregarDados();
+
+            MostrarDados(lstApi);
 
         }
 
@@ -225,7 +239,6 @@ namespace SistemaMaisZeroCursos
 
         private void AtualizarRegistro()
         {
-            var disciplinarepository = new DisciplinaRespository();
             editando = true;
 
             if (cboStatus.SelectedIndex != -1)
@@ -239,9 +252,12 @@ namespace SistemaMaisZeroCursos
                     DataAtualizacao = DateTime.UtcNow.AddHours(-3),
                 };
 
-                disciplinarepository.Atualizar(disciplinaModel);
+                var webApi = new DisciplinaWebApi();
+
+                webApi.Atualizar(disciplinaModel);
 
             }
+
         }
 
         private void FormatarGrid()

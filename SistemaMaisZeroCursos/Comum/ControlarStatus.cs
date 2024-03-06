@@ -1,5 +1,6 @@
 ﻿using MaisZeroCursos.DTO.Model;
 using SistemaMaisZeroCursos.Repository;
+using SistemaMaisZeroCursos.WebAPI;
 
 namespace SistemaMaisZeroCursos.Comum
 {
@@ -127,10 +128,10 @@ namespace SistemaMaisZeroCursos.Comum
 
         public static List<DocentesModel> NomeProfessor()
         {
-            var repository = new DocentesRepository();
-            var carregarDados = repository.CarregarDados();
+            var api = new DocenteWebApi();
+            var dados = api.CarregarDados();
 
-            return carregarDados.Where(l => l.IdStatus != 2).ToList(); ;
+            return dados.Where(l => l.IdStatus != 2).ToList();
         }
 
         public static List<ComboBoxCampo> BuscaFiltro()
