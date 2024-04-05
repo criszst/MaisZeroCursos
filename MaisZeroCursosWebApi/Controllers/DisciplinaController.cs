@@ -40,14 +40,9 @@ namespace MaisZeroCursosWebApi.Controllers
             {
                 atualizou = false;
             }
-            if (atualizou)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
+
+            return atualizou ? Ok() : BadRequest();
+
         }
 
         [HttpGet("Pesquisar/{nome}")]
