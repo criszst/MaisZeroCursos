@@ -1,4 +1,4 @@
 # MaisZeroCursos
-Baseado em um pequeno sistema escolar - com cadastros (e entre outras coisas) de disciplinas, docentes, discentes e etc.
+Based on a small school system - with records (and other things) of subjects, teachers, students, etc.
 
-- Atualmente em processo de "migração" do Windows Form para uma api web
+- Currently in the process of "migrating" from Windows Form to a web API
